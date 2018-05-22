@@ -23,16 +23,17 @@
  * Last digit cannot be *
  *
  * Create prime generating function (nextPrime). Approach answer from below i.e.
- * generate primes 10^2, check 'em and go on.
+ * generate primes 10^2, check 'em (dubs) and go on.
  *
  */
 class P51
 {
 
+    public $primeList;
     public function digits($n)
-    {
-        return (int) (log10($n)) + 1;
-    }
+{
+    return (int) (log10($n)) + 1;
+}
 
     public function isPrime($n)
     {
@@ -57,10 +58,13 @@ class P51
         return $n;
     }
 
-    public function genPrimeList($list,$digitslimit)
+    public function genPrimeList($list, $limit)
     {
-        while (array_sum($list) < $this->limit) {
-            $list[] = $this->genNextPrime(array_values(array_slice($list, - 1))[0]);
+        $currentPrime = array_values(array_slice($list, - 1))[0];
+        while ($currentPrime < $limit) {
+            $nextPrime = $this->genNextPrime($currentPrime);
+            $list[] = $nextPrime;
+            $currentPrime = $nextPrime;
         }
         array_pop($list);
         $this->primeList = $list;
@@ -69,6 +73,8 @@ class P51
 }
 
 $p51 = new P51();
+$p51->genPrimeList(array(101), 1000);
+print_r($p51->primeList);
 
 // O' Lordy, an insightful comment from Hades of Doom!
 
