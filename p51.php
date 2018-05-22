@@ -70,6 +70,8 @@ class P51
 
 $p51 = new P51();
 
+// O' Lordy, an insightful comment from Hades of Doom!
+
 // print_r($p51->digits(100000));
 
 ?>
