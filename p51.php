@@ -28,12 +28,12 @@
  */
 class P51
 {
-
     public $primeList;
+
     public function digits($n)
-{
-    return (int) (log10($n)) + 1;
-}
+    {
+        return (int) (log10($n)) + 1;
+    }
 
     public function isPrime($n)
     {
@@ -50,6 +50,12 @@ class P51
         if ($n == 2) {
             return $n = 3;
         }
+        if ($n % 2 == 0) {
+            $n += 1;
+            if ($this->isPrime($n)) {
+                return $n;
+            }
+        }
         $n += 2;
         while (! ($this->isPrime($n))) {
             $n += 2;
@@ -58,10 +64,10 @@ class P51
         return $n;
     }
 
-    public function genPrimeList($list, $limit)
+    public function genPrimeList($lowerlimit, $upperlimit)
     {
-        $currentPrime = array_values(array_slice($list, - 1))[0];
-        while ($currentPrime < $limit) {
+        $currentPrime = $lowerlimit;
+        while ($currentPrime < $upperlimit) {
             $nextPrime = $this->genNextPrime($currentPrime);
             $list[] = $nextPrime;
             $currentPrime = $nextPrime;
@@ -70,14 +76,16 @@ class P51
         $this->primeList = $list;
         return;
     }
+    
+    
 }
 
 $p51 = new P51();
-$p51->genPrimeList(array(101), 1000);
-print_r($p51->primeList);
+//$p51->genPrimeList(1000, 10000);
 
-// O' Lordy, an insightful comment from Hades of Doom!
+//print_r(substr_replace(1099, 33, 0,2));
 
-// print_r($p51->digits(100000));
+//print_r($p51->primeList);
+
 
 ?>
