@@ -23,7 +23,7 @@
  * Last digit cannot be *
  *
  * Create prime generating function (nextPrime). Approach answer from below i.e.
- * generate primes 10^2, check 'em (dubs) and go on.
+ * generate primes 10^2, check 'em (dubs) and go on, an on!
  *
  */
 class P51
@@ -47,18 +47,9 @@ class P51
 
     public function genNextPrime($n)
     {
-        if ($n == 2) {
-            return $n = 3;
-        }
-        if ($n % 2 == 0) {
-            $n += 1;
-            if ($this->isPrime($n)) {
-                return $n;
-            }
-        }
-        $n += 2;
+        $n += 1;
         while (! ($this->isPrime($n))) {
-            $n += 2;
+            $n += 1;
         }
         
         return $n;
@@ -76,16 +67,14 @@ class P51
         $this->primeList = $list;
         return;
     }
-    
-    
 }
 
 $p51 = new P51();
-//$p51->genPrimeList(1000, 10000);
 
-//print_r(substr_replace(1099, 33, 0,2));
+$p51->genPrimeList(1, 100);
 
-//print_r($p51->primeList);
+print_r($p51->primeList);
 
+// print_r(substr_replace(1099, 33, 0,2));
 
 ?>
