@@ -75,6 +75,4 @@ $p51->genPrimeList(1, 100);
 
 print_r($p51->primeList);
 
-// print_r(substr_replace(1099, 33, 0,2));
-
 ?>
