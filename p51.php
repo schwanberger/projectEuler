@@ -40,6 +40,8 @@ class P51
     public $testListList;
     public $digitPrimeList;
     public $candidateList;
+    public $famIDList = array();
+    public $famIDCounter;
 
     private function digits($n)
     {
@@ -135,33 +137,69 @@ class P51
         return $diff;
     }
 
-    public function find_p0($familysize)
+    public function find_p1($familysize)
     {
         $tempList = array();
-        for ($i = 0; $i < count($this->primeList); $i ++) {
+        for ($i = 0; $i < count($this->primeList) - 1; $i ++) {
+            
             for ($j = 1; $j < count($this->primeList); $j ++) {
-                $temp = $this->subractArrayElements($this->digitPrimeList[$i], $this->digitPrimeList[$j]);
-                print_r($temp);
+                // echo "i=" . $i . "j=" . $j . "\n";
+                $temp = $this->subractArrayElements($this->digitPrimeList[$j], $this->digitPrimeList[$i]);
+                // print_r($temp);
+                $temp2 = $temp;
                 rsort($temp);
                 if ($temp[0] == 0 and count(array_unique($temp)) == 2) {
-                    $tempList[] = $temp;
+                    $famID = $this->genFamilyID($temp2);
+                    // print_r($famID);
+                    if (! in_array($famID, $this->famIDList) or count($this->famIDList) == 0) {
+                        $this->famIDList[] = $famID;
+                        $this->famIDCounter[] = 2;
+                    } else {
+                        $famIDPos = array_search($famID, $this->famIDList);
+                        $this->famIDCounter[$famIDPos] += 1;
+                        for ($k = 0; $k < count($this->famIDCounter); $k ++) {
+                            if ($this->famIDCounter[$k] == $familysize) {
+                                echo "i=" . $i . ", " .  "j=" . $j . "\n";
+                                echo $this->primeList[$i] . "\n";
+                                return;
+                            }
+                        }
+                    }
                 }
             }
-            if (count($tempList) == $familysize - 1) {
-                $this->candidateList = $tempList;
-                return;
-            }
-            $tempList = array();
+            // if (count($tempList) == $familysize - 1) {
+            // $this->candidateList[] = $tempList;
+            // // print_r($i);
+            // // print_r($j);
+            // // return;
+            $this->famIDList = array();
+            $this->famIDCounter = array();
         }
         return;
+    }
+
+    public function genFamilyID($array)
+    {
+        $famID = $array;
+        for ($i = 0; $i < count($array); $i ++) {
+            if (! $array[$i] == 0) {
+                $famID[$i] = 10;
+            }
+        }
+        return $famID;
     }
 }
 $p51 = new P51();
 
-$p51->genPrimeList(100, 1000);
-$p51->createDigitPrimeList();
-$p51->find_p0(5);
-print_r($p51->candidateList);
+$p51->genPrimeList(100000, 1000000);
+// $p51->createDigitPrimeList();
+// $p51->find_p1(8);
+print_r($p51->famIDList);
+print_r($p51->famIDCounter);
+echo "Done!"
+// print_r($p51->primeList);
+// print_r($p51->candidateList);
+// print_r($p51->primeList);
 
 // print_r($p51->digitPrimeList);
 // print_r($p51->primeList);
