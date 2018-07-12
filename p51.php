@@ -215,7 +215,7 @@ $p51 = new P51();
 $p51->primeList = array_values(array_diff($p51->sieve(1000000),$p51->sieve(100000)));
 // print_r($p51->primeList);
 $p51->createDigitPrimeList();
-p51->find_p1(8);
+$p51->find_p1(8);
 print_r($p51->famIDList);
 print_r($p51->famIDCounter);
 echo "Done!";
