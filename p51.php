@@ -81,6 +81,26 @@ class P51
         return;
     }
 
+    public function sieve($n)
+    {
+        $limit = intval(sqrt($n));
+        $A = array_fill(0, $n, true);
+        for ($i = 2; $i <= $limit; $i ++) {
+            if ($A[$i - 1]) {
+                for ($j = $i * $i; $j <= $n; $j += $i) {
+                    $A[$j - 1] = false;
+                }
+            }
+        }
+        $result = array();
+        foreach ($A as $i => $is_prime) {
+            if ($is_prime) {
+                $result[] = $i + 1;
+            }
+        }
+        return $result;
+    }
+
     public function find_p0_1sd()
     // Used to determine P1
     {
@@ -159,7 +179,7 @@ class P51
                         $this->famIDCounter[$famIDPos] += 1;
                         for ($k = 0; $k < count($this->famIDCounter); $k ++) {
                             if ($this->famIDCounter[$k] == $familysize) {
-                                echo "i=" . $i . ", " .  "j=" . $j . "\n";
+                                echo "i=" . $i . ", " . "j=" . $j . "\n";
                                 echo $this->primeList[$i] . "\n";
                                 return;
                             }
@@ -191,29 +211,12 @@ class P51
 }
 $p51 = new P51();
 
-$p51->genPrimeList(100000, 1000000);
-// $p51->createDigitPrimeList();
-// $p51->find_p1(8);
+// $p51->genPrimeList(100000, 1000000);
+$p51->primeList = array_values(array_diff($p51->sieve(1000000),$p51->sieve(100000)));
+// print_r($p51->primeList);
+$p51->createDigitPrimeList();
+p51->find_p1(8);
 print_r($p51->famIDList);
 print_r($p51->famIDCounter);
-echo "Done!"
-// print_r($p51->primeList);
-// print_r($p51->candidateList);
-// print_r($p51->primeList);
+echo "Done!";
 
-// print_r($p51->digitPrimeList);
-// print_r($p51->primeList);
-// print_r($p51->subractArrayElements(array(1,1,3,1,3),array(1,1,2,1,2)));
-
-// $p51->find_p0_1sd();
-// print_r($p51->primeList);
-// print_r($p51->testList);
-// print_r($p51->primeList);
-// $derp = array(0,- 1,0,0,- 1);
-// rsort($derp);
-// print_r($derp);
-// print_r(array_unique($derp));
-
-// array_multisort($p51->testListList);
-// print_r($p51->testListList);
-?>
