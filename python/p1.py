@@ -1,4 +1,4 @@
-# Multiples of 3 and 5
+# Multiples of 3 and 5: https://projecteuler.net/problem=1
 # Problem 1 
 # If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
 #  
@@ -12,3 +12,15 @@ for i in xrange(1, 1000):
         result += i
 print result
 
+# Another solution using list comprehension and functions
+
+
+def sumofDivisors3v5(limit):
+    return sum((i for i in xrange(1, limit) if divisibleBy3v5(i)))
+
+    
+def divisibleBy3v5(num):
+    return num % 3 == 0 or num % 5 == 0
+
+
+print sumofDivisors3v5(1000)
