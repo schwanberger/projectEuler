@@ -30,8 +30,20 @@ def nextPrime(n):
 
 
 def isPrime(n):
-    for i in xrange(2, int(0.5 * n) + 1):
+    for i in xrange(2, int(n**0.5) + 1):
         if n % i == 0:
             return False
 
     return True
+
+
+def genPrime():
+    yield 2
+    yield 3
+    n = 3
+    while 1:
+        n += 2
+        while not isPrime(n):
+            n += 2
+        yield n
+    
