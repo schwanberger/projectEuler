@@ -53,19 +53,19 @@ data = [int(d) for d in str(a).split()]
 matrix = []
 
 for i in range(0, 400, 20):
-   matrix.append(data[i:20 + i])
+    matrix.append(data[i:20 + i])       
 
 product = 1
 for i in range(16):
-   for j in range(16):
-      diag_down = 1;horizontal = 1;vertical = 1;diag_up = 1
-      for k in range(4):
-         diag_down *= matrix[i + k][j + k] 
-         horizontal *= matrix[i][j + k]   
-         vertical *= matrix[i + k][j]   
-         diag_up *= matrix[i + k][j - k - 1] 
+    for j in range(16):
+        diag_down = 1;horizontal = 1;vertical = 1;diag_up = 1
+        for k in range(4):
+            diag_down *= matrix[i + k][j + k] 
+            horizontal *= matrix[i][j + k]   
+            vertical *= matrix[i + k][j]   
+            diag_up *= matrix[i + k][j - k - 1] 
          
-         if max(diag_down, horizontal, vertical, diag_up) > product:
+        if max(diag_down, horizontal, vertical, diag_up) > product:
             product = max(diag_down, horizontal, vertical, diag_up)           
 
 print(product)

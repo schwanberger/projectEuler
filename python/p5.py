@@ -4,10 +4,7 @@
 # 
 # What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 
-import sys
-sys.path.append('./eulerhelpers')
-
-from prime import primeFactors
+from eulerhelpers.prime import primeFactors
 
 dictofPrimesBelow20 = {2: 0, 3: 0, 5: 0, 7: 0, 11: 0, 13: 0, 17: 0, 19: 0}
 

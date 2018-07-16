@@ -4,9 +4,6 @@
 # 
 # Find the sum of all the primes below two million.
 
-import sys
-sys.path.append('./eulerhelpers')
-
-from prime import sieve
+from eulerhelpers.prime import sieve
 
 print sum(sieve(2000000))

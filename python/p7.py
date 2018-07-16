@@ -4,10 +4,7 @@
 # 
 # What is the 10 001st prime number?
 
-import sys
-sys.path.append('./eulerhelpers')
-
-from prime import genPrime, sieve
+from eulerhelpers.prime import genPrime, sieve
 
 primeGenerator = genPrime()
 

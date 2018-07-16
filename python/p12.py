@@ -17,10 +17,7 @@
 # 
 # What is the value of the first triangle number to have over five hundred divisors?
 
-import sys
-sys.path.append('./eulerhelpers')
-
-from prime import sieve
+# from eulerhelpers.prime import sieve
 
 '''if n has prime decompositon p1**a1 p2**a2 ... pn**an
    then number of factors are (a1+1)*(a2+2)*....*(an+1)
@@ -30,7 +27,6 @@ from prime import sieve
 # 2**4 * 3**4 * 5**4 * 7 * 11 = 62370000 
 # Generating triangle number can be shown to be n(n+1)/2 so a triangle number close to A is n = 11167 
 
-print 62370000**0.5
 
 def triangleNumbers(n):
     return n * (n + 1) * 0.5
