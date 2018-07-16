@@ -12,11 +12,11 @@ def isPalindrome(n):
     return s1 == s2[::-1]
 
 
-max = 0
+max_ = 0
 for a in xrange(100, 1000):
     for b in xrange(100, 1000):
         c = a * b
-        if isPalindrome(c) and c > max:
-            max = c
+        if isPalindrome(c) and c > max_:
+            max_ = c
             
-print max
+print max_
