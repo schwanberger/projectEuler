@@ -34,13 +34,13 @@ def triangleNumbers(n):
         
 def numofFactors(n):
     count = 0
-    for x in xrange(1, int(n**0.5) + 1):
+    for x in xrange(1, int(n ** 0.5) + 1):
         if n % x == 0:
             count += 2
 
 # Correction for perfect square
     
-    if int(n**0.5) * int(n**0.5) == n:
+    if int(n ** 0.5) * int(n ** 0.5) == n:
         count -= 1
     return count
 
@@ -52,13 +52,13 @@ def brute():
         n += 1
         triangleNum = triangleNumbers(n)
         c = numofFactors(triangleNum)
-        print triangleNum , c
-        
+                
         if c >= 500 or triangleNum >= 82535336:
             print triangleNum
             print c
             break
 
-#print numofFactors(12)
+
+# print numofFactors(12)
 brute()
 
