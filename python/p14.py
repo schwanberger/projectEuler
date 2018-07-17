@@ -14,7 +14,17 @@
 # 
 # NOTE: Once the chain starts the terms are allowed to go above one million.
 
+def memoize(f):
+    memo = {}
 
+    def helper(n):
+        if n not in memo:            
+            memo[n] = f(n)
+        return memo[n]
+
+    return helper
+    
+@memoize
 def collatzSeq(n):
     if n == 1:
         return 1
