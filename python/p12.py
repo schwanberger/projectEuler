@@ -33,10 +33,15 @@ def triangleNumbers(n):
 
         
 def numofFactors(n):
-    count = 1
-    for x in xrange(1, int(0.5 * n) + 1):
+    count = 0
+    for x in xrange(1, int(n**0.5) + 1):
         if n % x == 0:
-            count += 1
+            count += 2
+
+# Correction for perfect square
+    
+    if int(n**0.5) * int(n**0.5) == n:
+        count -= 1
     return count
 
 
@@ -54,6 +59,6 @@ def brute():
             print c
             break
 
-# print numofFactors(100)
-# brute()
+#print numofFactors(12)
+brute()
 
