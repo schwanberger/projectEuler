@@ -9,14 +9,15 @@
 def memoize(f):
     memo = {}
 
-    def helper(i,j):
-        if (i,j) not in memo:            
-            memo[i,j] = f(i,j)
-        return memo[i,j]
+    def helper(i, j):
+        if (i, j) not in memo:            
+            memo[i, j] = f(i, j)
+        return memo[i, j]
 
     return helper
 
 # Brute runs for more than 15 minutes without memoization
+
 
 @memoize
 def brute(i, j):
