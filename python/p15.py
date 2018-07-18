@@ -16,23 +16,20 @@ def memoize(f):
 
     return helper
 
-# Brute runs for more than 15 minutes without memoization
 
-
+# brutus runs for more than 15 minutes without memoization
 @memoize
-def brute(i, j):
+def brutus(i, j):
     if i > 0 and j > 0:
-        return brute(i - 1, j) + brute(i, j - 1)
+        return brutus(i - 1, j) + brutus(i, j - 1)
     
     if i == 0 and j > 0:
-        return brute(i, j - 1)
+        return brutus(i, j - 1)
     
     if i > 0 and j == 0:
-        return brute(i - 1, j)
+        return brutus(i - 1, j)
     
     if i == 0 and j == 0:
         return 1
 
-
-for i in xrange(1, 21):
-    print i, brute(i, i)
+print brutus(20,20)
