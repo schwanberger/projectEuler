@@ -51,28 +51,21 @@ data = [
 [91, 71, 52, 38, 17, 14, 91, 43, 58, 50, 27, 29, 48],
 [63, 66, 04, 68, 89, 53, 67, 30, 73, 16, 69, 87, 40, 31],
 [04, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 04, 23],
-     ]
+    ]
 
-i_MAX = len(data)
-j_MAX = len(data)
-
-derpList = set()
+currentMax = 0
 
 
 def brutus(i, j, result):
-    print (i, j)
-#     if j == j_MAX:
-#         derpList.append(result)
-#         return result
-    
-    if i == i_MAX:
-        derpList.add(result)
-        # print result
-        return result
-    
-    return brutus(i + 1, j, result + data[i][j]) + brutus(i + 1, j + 1, result + data[i][j])
+    global currentMax
+        
+    if i == len(data) - 1:
+        if result > currentMax:
+            currentMax = result
+        return 0
+    return brutus(i + 1, j, result + data[i + 1][j]) + brutus(i + 1, j + 1, result + data[i + 1][j + 1])
 
 
-brutus(0, 0, 0)
-print max(derpList)
+brutus(0, 0, data[0][0])
+print currentMax
 
