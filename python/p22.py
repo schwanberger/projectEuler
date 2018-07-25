@@ -25,7 +25,7 @@ nameScoreSum = 0
 count = 1
 
 
-def getNameScore(name):
+def getNameWorth(name):
     nameScore = 0
     for letter in name:
         nameScore += string.uppercase.index(letter) + 1
@@ -33,7 +33,7 @@ def getNameScore(name):
     
         
 for name in data:
-    nameScoreSum += getNameScore(name) * count
+    nameScoreSum += getNameWorth(name) * count
     count += 1
     
 print nameScoreSum
