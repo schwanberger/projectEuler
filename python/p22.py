@@ -26,10 +26,10 @@ count = 1
 
 
 def getNameWorth(name):
-    nameScore = 0
+    nameWorth = 0
     for letter in name:
-        nameScore += string.uppercase.index(letter) + 1
-    return nameScore
+        nameWorth += string.uppercase.index(letter) + 1
+    return nameWorth
     
         
 for name in data:
