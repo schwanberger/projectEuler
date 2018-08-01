@@ -37,7 +37,7 @@ def recCount(n, m):
 
 print recCount(200, 7)
 
-#Dynamical programming, bottom up approach derived from recursion above.
+#Dynamical programming, iterative bottom up approach derived from recursion above.
 def iteCount(n):
     count = [0] * (n + 1)
     count[0] = 1
