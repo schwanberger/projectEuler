@@ -8,3 +8,8 @@
 # 
 # If the product of these four fractions is given in its lowest common terms, find the value of the denominator.
 
+a = [i for i in xrange(11,100) if i % 10]
+#b = 
+
+print a
+#print b
