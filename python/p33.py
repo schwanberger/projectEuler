@@ -8,8 +8,36 @@
 # 
 # If the product of these four fractions is given in its lowest common terms, find the value of the denominator.
 
-a = [i for i in xrange(11,100) if i % 10]
-#b = 
 
-print a
-#print b
+def returnTestCases(a, b):
+    testCaseList = []
+    for i in xrange(1, 10):
+        testCase1 = float(int(str(i) + str(a))) / float(int(str(b) + str(i)))
+        testCase2 = float(int(str(a) + str(i))) / float(int(str(i) + str(b)))
+#         testCase1 = (str(i) + str(a)) + "," + (str(b) + str(i))
+#         testCase2 = (str(a) + str(i)) + "," + (str(i) + str(b))
+        testCaseList.append(testCase1)
+        testCaseList.append(testCase2)
+
+    return testCaseList
+
+matchList = []
+
+for a in xrange(1, 9):
+    for b in xrange(a + 1, 10):
+        #print a,b
+        test = float(a)/float(b)
+        testCases = returnTestCases(a, b)
+        #print testCases
+        for tests in testCases:
+            if test == tests:
+                matchList.append(test)
+        
+
+
+#print returnTestCases(4, 8)
+#print len(returnTestCases(1, 3))
+print matchList
+print len(matchList)
+# 
+# print float(4/8) == float(49/98)
