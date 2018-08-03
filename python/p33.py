@@ -10,24 +10,25 @@
 
 
 def returnTestCases(a, b):
-    testCaseList = []
+    testCaseDict = dict()
     for i in xrange(1, 10):
+        testFrac1 = str(i) + str(a) + "/" + str(b) + str(i)
+        testFrac2 = str(a) + str(i) + "/" + str(i) + str(b)
         testCase1 = float(str(i) + str(a)) / float(str(b) + str(i))
         testCase2 = float(str(a) + str(i)) / float(str(i) + str(b))
-        testCaseList.append(testCase1)
-        testCaseList.append(testCase2)
+        testCaseDict[testCase1] = testFrac1
+        testCaseDict[testCase2] = testFrac2
 
-    return testCaseList
+    return testCaseDict
 
 
-matchList = []
+matchDict = dict()
 
 for a in xrange(1, 9):
     for b in xrange(a + 1, 10):
-        test = float(a) / float(b)
+        lowestFrac = float(a) / float(b)
         testCases = returnTestCases(a, b)
-        if test in testCases:
-            matchList.append(test)
+        if lowestFrac in testCases:
+            matchDict[lowestFrac] = testCases[lowestFrac]
 
-print matchList
-
+print matchDict
